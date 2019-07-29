@@ -3,6 +3,8 @@ from django.conf import settings
 from django.core.validators import MinValueValidator
 from .choices import * 
 from datetime import date
+from django.template.defaultfilters import slugify
+from VehicleRent.utils import generate_random_string
 
 
 
@@ -27,6 +29,13 @@ class Advert(models.Model):
     def __str__(self):
         return f"USERNAME: {self.author}, {self.vehicle_type.upper()}: {self.vehicle_brand} {self.vehicle_model}"
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            slug = slugify(self.vehicle_brand) + '-' + slugify(self.vehicle_model)
+            random_string = generate_random_string()
+            self.slug = slug + '-' + random_string
+        super(Advert, self).save(*args, **kwargs)
+ 
 
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
