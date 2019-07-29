@@ -2,6 +2,8 @@ from rest_framework import serializers
 from adverts.models import Advert, Order
 import datetime
 
+now = datetime.date.today()
+now.strftime("%d-%m-%Y")
 
 class AdvertSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
@@ -22,8 +24,6 @@ class AdvertSerializer(serializers.ModelSerializer):
         return representation
 
     def validate(self, data):
-        now = datetime.date.today()
-        now.strftime("%d-%m-%Y")
         if data['available_from'] > data['available_to']:
             raise serializers.ValidationError("Available to date must occur after available from date")
         elif data['available_to'] < now:
@@ -44,8 +44,36 @@ class OrderSerializer(serializers.ModelSerializer):
     def get_created_at(self, instance):
         return instance.created_at.strftime("%d-%m-%Y")
 
+    def to_representation(self, instance):
+        representation = super(OrderSerializer, self).to_representation(instance)
+        representation['order_from'] = instance.order_from.strftime("%d-%m-%Y")
+        representation['order_to'] = instance.order_to.strftime("%d-%m-%Y")
+        return representation
+
+    # def get_advert_date_from(self, instance):
+    #     return instance.advert.available_from
+
+    # def get_advert_date_to(self, instance):
+    #     return instance.advert.available_to
+
     def get_advert_slug(self, instance):
         return instance.advert.slug
+
+    # def validate(self, data):
+    #     #print(self.advert_dates)
+    #     if data['order_from'] < self.advert_available_from:
+    #         raise serializers.ValidationError(f"This vehicle is available from: {self.advert_available_from}. You cannot order vehicle before than available data")
+    #     elif data['order_to'] > self.advert_available_to:
+    #         raise serializers.ValidationError(f"This vehicle is available to: {self.advert_available_to}. You cannot order vehicle later than available data")
+    #     return data
+
+    # def get_start_end_dates(self, instance):
+    #     dates = []
+    #     dates.append(instance.advert.available_from.strftime("%d-%m-%Y"))
+    #     dates.append(instance.advert.available_to.strftime("%d-%m-%Y"))
+    #     return dates
+
+
 
 
 

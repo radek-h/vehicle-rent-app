@@ -26,8 +26,8 @@ class Advert(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
 
 
-    def __str__(self):
-        return f"USERNAME: {self.author}, {self.vehicle_type.upper()}: {self.vehicle_brand} {self.vehicle_model}"
+    # def __str__(self):
+    #     return f"USERNAME: {self.author}, {self.vehicle_type.upper()}: {self.vehicle_brand} {self.vehicle_model}"
 
     def save(self, *args, **kwargs):
         slug = slugify(self.vehicle_brand) + '-' + slugify(self.vehicle_model)
