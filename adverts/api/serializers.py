@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from adverts.models import Advert, Order
+import datetime
 
 
 class AdvertSerializer(serializers.ModelSerializer):
@@ -19,6 +20,16 @@ class AdvertSerializer(serializers.ModelSerializer):
         representation['available_from'] = instance.available_from.strftime("%d-%m-%Y")
         representation['available_to'] = instance.available_to.strftime("%d-%m-%Y")
         return representation
+
+    def validate(self, data):
+        now = datetime.date.today()
+        now.strftime("%d-%m-%Y")
+        if data['available_from'] > data['available_to']:
+            raise serializers.ValidationError("Available to date must occur after available from date")
+        elif data['available_to'] < now:
+            raise serializers.ValidationError("Ensure that available to date must occur after today or today")
+        else:
+            return data
 
 
 class OrderSerializer(serializers.ModelSerializer):
