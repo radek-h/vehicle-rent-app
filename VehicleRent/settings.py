@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'users',
     'adverts',
 
-    'rest_auth', # RESTowa autoryzacja
+    'rest_auth',
     'rest_auth.registration', 
 
     'crispy_forms',
