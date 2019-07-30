@@ -71,7 +71,7 @@ ROOT_URLCONF = 'VehicleRent.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -145,6 +145,9 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = "/static/"
 
 AUTH_USER_MODEL = "users.CustomUser"
+
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 # django.allauth
 ACCOUNT_EMAIL_VERIFICATION = "none"

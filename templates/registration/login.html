@@ -1,0 +1,28 @@
+{% extends 'auth_layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block auth %}
+
+<h1 style="text-align: center;">VehicleRent</h1>
+<p class="lead">
+    <i class="medium material-icons">directions_car</i> 
+    <i class="medium material-icons">airport_shuttle</i>
+    <i class="medium material-icons">motorcycle</i>
+    <i class="medium material-icons">directions_boat</i>
+    <i class="medium material-icons">local_shipping</i>
+
+</p>
+<div class="login-form-container">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="submit-btn">
+            <button class="btn waves-effect waves-light" type="submit">
+                    LOGIN<i class="material-icons right">send</i>
+            </button>
+        </div>
+    </form>
+    <p class="form-footer">Or <a href="{% url 'django_register' %}">Create Account</a></p>
+</div>
+
+{% endblock %}
