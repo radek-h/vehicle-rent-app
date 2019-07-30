@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'rest_framework',
-    #'rest_framework.authtoken',
+    'rest_framework.authtoken',
 
     'allauth',
     'allauth.account',
@@ -49,10 +49,10 @@ INSTALLED_APPS = [
     'users',
     'adverts',
 
-    #'rest_auth', # RESTowa autoryzacja
-    #'rest_auth.registration', 
+    'rest_auth', # RESTowa autoryzacja
+    'rest_auth.registration', 
 
-    #'crispy_forms',
+    'crispy_forms',
     # 'webpack_loader'
 ]
 
@@ -134,11 +134,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 LOGIN_URL = "accounts/login/" # RH #
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = "/static/"
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -160,4 +164,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 3
 }
-# STATIC_ROOT = "/static/"
+

@@ -13,21 +13,20 @@ class Advert(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,
                                on_delete=models.CASCADE,
                                related_name="adverts")
+    purchasers = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                        related_name="purchasers")
     vehicle_type = models.CharField('Type', choices=VEHICLE_TYPES, max_length=100)
     vehicle_brand = models.CharField('Brand', max_length=100)
     vehicle_model = models.CharField('Model', max_length=100)
     city = models.CharField(max_length=100)
     price_per_day = models.PositiveIntegerField('Price/day', validators=[
-                                     MinValueValidator(1)
-                                     ])
-    available_from = models.DateField()
+                                     MinValueValidator(1)])
+    available_from = models.DateField(default=datetime.date.today)
     available_to = models.DateField()
+    image = models.ImageField('Photo', blank=True, upload_to='vehicles_photos')
     content = models.TextField()
     slug = models.SlugField(max_length=100, unique=True)
 
-
-    # def __str__(self):
-    #     return f"USERNAME: {self.author}, {self.vehicle_type.upper()}: {self.vehicle_brand} {self.vehicle_model}"
 
     def save(self, *args, **kwargs):
         slug = slugify(self.vehicle_brand) + '-' + slugify(self.vehicle_model)
@@ -36,7 +35,6 @@ class Advert(models.Model):
         super(Advert, self).save(*args, **kwargs)
 
  
-
 class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     advert = models.ForeignKey(Advert, 

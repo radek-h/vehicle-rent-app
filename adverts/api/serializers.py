@@ -9,10 +9,18 @@ class AdvertSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
     created_at = serializers.SerializerMethodField()
     slug = serializers.SlugField(read_only=True)
+    purchasers_count = serializers.SerializerMethodField()
+    availability = serializers.SerializerMethodField()
 
     class Meta:
         model = Advert
-        fields = '__all__'
+        exclude = ['purchasers']
+
+    def get_purchasers_count(self, instance):
+        return instance.purchasers.count()
+
+    def get_availability(self, instance):
+        return instance.available_to >= now
 
     def get_created_at(self, instance):
         return instance.created_at.strftime("%d-%m-%Y")
@@ -36,10 +44,11 @@ class OrderSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField(read_only=True)
     created_at = serializers.SerializerMethodField()
     advert_slug = serializers.SlugField(read_only=True)
-
+    
     class Meta:
         model = Order
         exclude = ['advert']
+
 
     def get_created_at(self, instance):
         return instance.created_at.strftime("%d-%m-%Y")
@@ -50,28 +59,9 @@ class OrderSerializer(serializers.ModelSerializer):
         representation['order_to'] = instance.order_to.strftime("%d-%m-%Y")
         return representation
 
-    # def get_advert_date_from(self, instance):
-    #     return instance.advert.available_from
-
-    # def get_advert_date_to(self, instance):
-    #     return instance.advert.available_to
-
     def get_advert_slug(self, instance):
         return instance.advert.slug
 
-    # def validate(self, data):
-    #     #print(self.advert_dates)
-    #     if data['order_from'] < self.advert_available_from:
-    #         raise serializers.ValidationError(f"This vehicle is available from: {self.advert_available_from}. You cannot order vehicle before than available data")
-    #     elif data['order_to'] > self.advert_available_to:
-    #         raise serializers.ValidationError(f"This vehicle is available to: {self.advert_available_to}. You cannot order vehicle later than available data")
-    #     return data
-
-    # def get_start_end_dates(self, instance):
-    #     dates = []
-    #     dates.append(instance.advert.available_from.strftime("%d-%m-%Y"))
-    #     dates.append(instance.advert.available_to.strftime("%d-%m-%Y"))
-    #     return dates
 
 
 
