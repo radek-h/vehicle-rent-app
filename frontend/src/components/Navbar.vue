@@ -42,7 +42,8 @@ nav {
     margin-top: 20px;
     border: 1px solid lightgray;
     border-radius: 10px;
-    -webkit-box-shadow: none;
+    box-shadow: none;
+    
 }
 .brand-logo{
     color: gray;
@@ -51,9 +52,10 @@ nav {
 .brand-logo:hover{
     color: black;
 }
+
 li > a{
     color: black;
-    -webkit-box-shadow: none;
+    box-shadow: none;
     border: 1px solid lightgray;
     border-radius: 10px;
 }
