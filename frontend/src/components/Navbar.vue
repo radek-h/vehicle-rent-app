@@ -3,7 +3,7 @@
 <div class="container">
   <nav>
     <div class="nav-wrapper">
-    <a href="#" class="brand-logo">VehicleRent</a>
+    <strong><a href="#" class="brand-logo">VehicleRent</a></strong>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li> 
         <router-link to="/" class="btn waves-effect waves-light white">
