@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from adverts.models import Advert, Order
 import datetime
+import os
+from urllib.parse import urlparse
 
 now = datetime.date.today()
 now.strftime("%d-%m-%Y")
@@ -11,10 +13,16 @@ class AdvertSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     purchasers_count = serializers.SerializerMethodField()
     availability = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = Advert
         exclude = ['purchasers']
+
+    def get_image(self, instance):
+        """ Return filename in image url path """"
+        return os.path.basename(str(instance.image))
+        
 
     def get_purchasers_count(self, instance):
         return instance.purchasers.count()

@@ -7,7 +7,7 @@
                v-for="advert in adverts" 
                :key="advert.pk">
             <div class="card-image">
-              <img src="@/assets/logo.png">
+              <img src="@/assets/vehicles_photos/{{  }}">
             </div>
             <div class="card-content">
               <div class="vehicle-content">
