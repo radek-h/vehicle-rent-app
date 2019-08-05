@@ -2,25 +2,53 @@
   <div class="home">
     <div class="container">
       <div class="row>">
-        <div class="col s12 m7">
+        <div class="col s12 m6">
           <div class="card small" 
                v-for="advert in adverts" 
                :key="advert.pk">
-            <div class="card-image">
-              <img :src="getImg(advert.image)" :alt="advert.image"/>
+            <div class="card-image"
+                 style="max-width: 250px">
+              <img :src="getImg(advert.image)"
+                     :alt="advert.image"/>
             </div>
             <div class="card-content">
-              <div class="vehicle-content">
-                 Brand: <h5><span>{{ advert.vehicle_brand }}</span></h5>
-                 Model: <h5><span>{{ advert.vehicle_model }}</span></h5>
+              <div class="vehicle-info-container">
+
+                <div class="brand-content">
+                  Brand: <h5><span>{{ advert.vehicle_brand }}</span></h5>
+                </div>
+
+                <div class="model-content">
+                  Model: <h5><span>{{ advert.vehicle_model }}</span></h5>
+                </div>
                  
-                 Price per day: <h5><span>{{ advert.price_per_day }}</span>$</h5>
               </div>
-              <div class="availability-content">
-                City: <h5><span>{{ advert.city}}</span></h5>
-                Available from: <h5><span>{{ advert.available_from}}</span></h5>
-                Available to:<h5> <span>{{ advert.available_to}}</span></h5>
+
+              <div class="location-container">
+                <div class="city-content">
+                  City: <h5><span>{{ advert.city }}</span></h5>
+                </div>
+
+                <div class="price-day-content">
+                  Price/day: <h5><span>{{ advert.price_per_day }}</span>$</h5>
+                </div>
               </div>
+
+              <div class="availability-container">
+                <div class="ava-from-content">
+                  Available from: <h5><span>{{ advert.available_from}}</span></h5>
+                </div>
+                <div class="ava-to-content">
+                  Available to:<h5><span>{{ advert.available_to}}</span></h5>
+                </div>
+              </div>
+
+              <div class="content-container">
+                <div class="desc">
+                  Description: <h6><span>{{ advert.content }}</span></h6>
+                </div>
+              </div>
+
 
              
             </div>
@@ -75,9 +103,13 @@ export default {
 </script>
 
 <style>
-.vehicle-content, .availability-content{
+.vehicle-info-container,
+.availability-container,
+.location-container,
+.content-container {
   float: left;
-  margin-right: 10px; 
+  min-width: 200px;
+  /* margin-right: 40px;  */
 }
 .posted-by p, .advert-created p{
   margin: 0;
@@ -102,6 +134,16 @@ export default {
 .card .card-action a:hover{
   color: red !important;
   border-color: red;
+}
+.card-content {
+  max-height: 60% !important;
+}
+.brand-content, .city-content, .ava-from-content{
+  margin-bottom: 20px;
+}
+.desc span{
+  border: 1px solid lightgray;
+  padding: 5px;
 }
 </style>
 

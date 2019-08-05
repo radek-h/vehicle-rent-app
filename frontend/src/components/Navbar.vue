@@ -4,6 +4,9 @@
   <nav>
     <div class="nav-wrapper">
     <strong><a href="#" class="brand-logo">VehicleRent</a></strong>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li> 
         <router-link to="/" class="btn waves-effect waves-light white">
@@ -23,9 +26,22 @@
     </ul>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
+
 </div>
-  
 </template>
+
+<script>
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+</script>
 
 <script>
 export default {
@@ -34,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+nav a {
+  color: black;
+}
 nav ul a.btn{
     margin-left: 0px;
 }
