@@ -7,7 +7,7 @@
                v-for="advert in adverts" 
                :key="advert.pk">
             <div class="card-image">
-              <img src="@/assets/vehicles_photos/{{  }}">
+              <img :src="getImg(advert.image)" :alt="advert.image"/>
             </div>
             <div class="card-content">
               <div class="vehicle-content">
@@ -20,7 +20,6 @@
                 City: <h5><span>{{ advert.city}}</span></h5>
                 Available from: <h5><span>{{ advert.available_from}}</span></h5>
                 Available to:<h5> <span>{{ advert.available_to}}</span></h5>
-                <!-- <h5>Available? <span>{{ advert.availability}}</span></h5> -->
               </div>
 
              
@@ -63,11 +62,14 @@ export default {
         .then(data => {
           this.adverts.push(...data.results)
         })
+    },
+    getImg(img) {
+      return require('@/assets/vehicles/'+img)
     }
   },
   created () {
     this.getAdverts()
-    console.log(this.adverts)
+    // console.log(this.adverts)
   }
 };
 </script>
