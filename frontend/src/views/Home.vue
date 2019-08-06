@@ -106,6 +106,7 @@ export default {
       });
     },
     getImg(img) {
+      console.log(img);
       return require("@/assets/vehicles/" + img);
     },
     getTotalPrice(advert) {

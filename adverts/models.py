@@ -27,12 +27,16 @@ class Advert(models.Model):
     content = models.TextField()
     slug = models.SlugField(max_length=100, unique=True)
 
+    def __str__(self):
+        return f"{self.author} - {self.vehicle_brand}, {self.vehicle_model}"
 
     def save(self, *args, **kwargs):
         slug = slugify(self.vehicle_brand) + '-' + slugify(self.vehicle_model)
         random_string = generate_random_string()
         self.slug = slug + '-' + random_string
         super(Advert, self).save(*args, **kwargs)
+
+    
 
  
 class Order(models.Model):
