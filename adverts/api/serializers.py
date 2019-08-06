@@ -12,12 +12,16 @@ class AdvertSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     slug = serializers.SlugField(read_only=True)
     purchasers_count = serializers.SerializerMethodField()
+    days_available = serializers.SerializerMethodField()
     availability = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
 
     class Meta:
         model = Advert
         exclude = ['purchasers']
+
+    def get_days_available(self, instance):
+        return (instance.available_to - instance.available_from).days
 
     def get_image(self, instance):
         """ Return filename in image url path """

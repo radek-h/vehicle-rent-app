@@ -6,21 +6,20 @@
 </template>
 
 <script>
-
-import NavbarComponent from "@/components/Navbar.vue"
+import NavbarComponent from "@/components/Navbar.vue";
 
 export default {
   name: "App",
   components: {
     NavbarComponent
   }
-}
+};
 </script>
 
-
 <style>
-html, body{
+html,
+body {
   height: 100%;
-  font-family: 'Lato', sans-serif !important;
+  font-family: "Lato", sans-serif !important;
 }
 </style>
