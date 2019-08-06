@@ -5,7 +5,7 @@
         <div class="col s12 m6">
           <div class="card small" v-for="advert in adverts" :key="advert.pk">
             <div class="card-image" style="max-width: 250px">
-              <img :src="getImg(advert.image)" :alt="advert.image" />
+              <img :src="getImg(advert.image)" />
             </div>
             <div class="card-content">
               <div class="vehicle-info-container">
@@ -95,7 +95,7 @@ export default {
   name: "home",
   data() {
     return {
-      adverts: []
+      adverts: [],
     };
   },
   methods: {

@@ -31,11 +31,11 @@ module.exports = {
             .disableHostCheck(true)
             .headers({"Access-Control-Allow-Origin": ["\*"]})
 
-        config.module
-            .rule('images')
-              .use('url-loader')
-                .loader('url-loader')
-                .tap(options => Object.assign(options, { limit: 10240 }))
+        // config.module
+        //     .rule('images')
+        //       .use('url-loader')
+        //         .loader('url-loader')
+        //         .tap(options => Object.assign(options, { limit: 10240 }))
 
     },
 

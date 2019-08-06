@@ -54,41 +54,41 @@ nav a {
   color: black;
 }
 nav ul a.btn{
-    margin-left: 0px;
+  margin-left: 0px;
 }
 nav {
-    background-color:white;
-    margin-top: 20px;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    box-shadow: none;
+  background-color:white;
+  margin-top: 20px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  box-shadow: none;
     
 }
 .brand-logo{
-    color: gray;
-    margin-left: 15px;
+  color: gray;
+  margin-left: 15px;
 }
 .brand-logo:hover{
-    color: black;
+  color: black;
 }
 
 li > a{
-    color: black;
-    box-shadow: none;
-    border: 1px solid lightgray;
-    border-radius: 10px;
+  color: black;
+  box-shadow: none;
+  border: 1px solid lightgray;
+  border-radius: 10px;
 }
 li:nth-child(1) > a:hover{ /* home */
-    border: 1px solid #26a69a;
-    color: #26a69a;
+  border: 1px solid #26a69a;
+  color: #26a69a;
 }
 li:nth-child(2) > a:hover{ /* add advert */
-    border: 1px solid #eea92a;
-    color: #eea92a;
+  border: 1px solid #eea92a;
+  color: #eea92a;
 }
 li:nth-child(3) > a:hover{ /* logout */
-    border: 1px solid red;
-    color: red;
+  border: 1px solid red;
+  color: red;
 }
 </style>
 
