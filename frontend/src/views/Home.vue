@@ -80,7 +80,12 @@
                   </p>
                 </div>
               </div>
-              <a class="waves-effect waves-teal btn-flat">Make an order</a>
+              <router-link
+                :to="{ name: 'advert', params: { slug: advert.slug } }">
+                <a class="waves-effect btn-flat">View details</a>
+              </router-link>
+              
+              <!-- <a class="waves-effect waves-teal btn-flat">Make an order</a> -->
             </div>
           </div>
         </div>
@@ -100,13 +105,12 @@ export default {
   },
   methods: {
     getAdverts() {
-      let endpoint = "api/adverts/";
+      let endpoint = "/api/adverts/";
       apiService(endpoint).then(data => {
         this.adverts.push(...data.results);
       });
     },
     getImg(img) {
-      console.log(img);
       return require("@/assets/vehicles/" + img);
     },
     getTotalPrice(advert) {
@@ -125,12 +129,10 @@ export default {
 .availability-container,
 .location-container {
   float: left;
-  min-width: 200px;
-  /* margin-right: 40px;  */
+  min-width: 20%;
 }
 .price-container {
-  float: left;
-  min-width: 300px;
+  min-width: 40%;
 }
 .posted-by p,
 .advert-created p {
@@ -147,13 +149,13 @@ export default {
 }
 .card .card-action a {
   float: right;
-  color: #ee7c7c !important;
-  border: 1px solid #ee7c7c;
+  color: #6e6e6e !important;
+  border: 1px solid #6e6e6e;
   margin-right: 0px !important;
 }
 .card .card-action a:hover {
   color: white !important;
-  background: red;
+  background: #6e6e6e;
 }
 .card-content {
   max-height: 60% !important;

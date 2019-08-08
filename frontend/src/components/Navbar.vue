@@ -38,9 +38,9 @@
 </template>
 
 <script>
-$(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
+// $(document).ready(function(){
+//     $('.sidenav').sidenav();
+//   });
 </script>
 
 <script>
