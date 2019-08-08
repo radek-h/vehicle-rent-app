@@ -3,7 +3,11 @@
 <div class="container">
   <nav>
     <div class="nav-wrapper">
-    <strong><a href="#" class="brand-logo">VehicleRent</a></strong>
+    <strong>
+      <div class="brand-logo">
+          VehicleRent
+      </div>
+    </strong>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger">
       <i class="material-icons">menu</i>
     </a>
@@ -67,9 +71,7 @@ nav {
 .brand-logo{
   color: gray;
   margin-left: 15px;
-}
-.brand-logo:hover{
-  color: black;
+  cursor: default;
 }
 
 li > a{

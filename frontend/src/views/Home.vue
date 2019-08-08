@@ -132,7 +132,9 @@ export default {
   min-width: 20%;
 }
 .price-container {
+  float: right;
   min-width: 40%;
+  margin-bottom: 25px;
 }
 .posted-by p,
 .advert-created p {
@@ -151,13 +153,14 @@ export default {
   float: right;
   color: #6e6e6e !important;
   border: 1px solid #6e6e6e;
+  border-radius: 10px;
   margin-right: 0px !important;
 }
 .card .card-action a:hover {
   color: white !important;
   background: #6e6e6e;
 }
-.card-content {
+.card.small .card-content {
   max-height: 60% !important;
 }
 .brand-content,
