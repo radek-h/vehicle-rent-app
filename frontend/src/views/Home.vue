@@ -11,47 +11,47 @@
               <div class="vehicle-info-container">
                 <div class="brand-content">
                   Brand:
-                  <h5>
+                  <h6>
                     <span>{{ advert.vehicle_brand }}</span>
-                  </h5>
+                  </h6>
                 </div>
 
                 <div class="model-content">
                   Model:
-                  <h5>
+                  <h6>
                     <span>{{ advert.vehicle_model }}</span>
-                  </h5>
+                  </h6>
                 </div>
               </div>
 
               <div class="location-container">
                 <div class="city-content">
                   City:
-                  <h5>
+                  <h6>
                     <span>{{ advert.city }}</span>
-                  </h5>
+                  </h6>
                 </div>
 
                 <div class="price-day-content">
                   Price for {{ advert.days_available }} days:
-                  <h5>
+                  <h6>
                     <span>{{ getTotalPrice(advert) }}$</span>
-                  </h5>
+                  </h6>
                 </div>
               </div>
 
               <div class="availability-container">
                 <div class="ava-from-content">
                   Available from:
-                  <h5>
+                  <h6>
                     <span>{{ advert.available_from }}</span>
-                  </h5>
+                  </h6>
                 </div>
                 <div class="ava-to-content">
                   Available to:
-                  <h5>
+                  <h6>
                     <span>{{ advert.available_to }}</span>
-                  </h5>
+                  </h6>
                 </div>
               </div>
 
@@ -77,6 +77,12 @@
                   <p>
                     Advert created:
                     <span>{{ advert.created_at }}</span>
+                  </p>
+                </div>
+                <div class="purchasers-counter">
+                  <p>
+                    Purchasers:
+                    <span>{{ advert.purchasers_count }}</span>
                   </p>
                 </div>
               </div>
@@ -136,6 +142,7 @@ export default {
   min-width: 40%;
   margin-bottom: 25px;
 }
+.purchasers-counter p,
 .posted-by p,
 .advert-created p {
   margin: 0;
