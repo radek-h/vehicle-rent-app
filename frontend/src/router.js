@@ -1,12 +1,21 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+<<<<<<< HEAD
+=======
+import Advert from "./views/Advert.vue";
+import AdvertEditor from "./views/AdvertEditor.vue";
+>>>>>>> vuejs
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
+<<<<<<< HEAD
   base: process.env.BASE_URL,
+=======
+  // base: process.env.BASE_URL,
+>>>>>>> vuejs
   routes: [
     {
       path: "/",
@@ -14,6 +23,7 @@ export default new Router({
       component: Home
     },
     {
+<<<<<<< HEAD
       path: "/about",
       name: "about",
       // route level code-splitting
@@ -22,5 +32,18 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     }
+=======
+      path: "/advert/:slug",
+      name: "advert",
+      component: Advert,
+      props: true
+    },
+    {
+      path: "/add-advert/:slug?",
+      name: "advert-editor",
+      component: AdvertEditor,
+      props: true
+    },
+>>>>>>> vuejs
   ]
 });

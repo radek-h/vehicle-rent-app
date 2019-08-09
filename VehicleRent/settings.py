@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'rest_auth.registration', 
 
     'crispy_forms',
-    # 'webpack_loader'
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -134,8 +134,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/frontend/src/assets/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'frontend/src/assets')
 
 LOGIN_URL = "accounts/login/" # RH #
 LOGIN_REDIRECT_URL = "/"
@@ -165,6 +165,12 @@ REST_FRAMEWORK = {
        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 3
+    'PAGE_SIZE': 15
 }
 
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'frontend', 'webpack-stats.json'),
+    }
+}

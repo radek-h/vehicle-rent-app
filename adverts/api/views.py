@@ -12,7 +12,7 @@ now = datetime.now()
 now = now.strftime("%Y-%m-%d")
 
 class AdvertViewSet(viewsets.ModelViewSet):
-    queryset = Advert.objects.all()
+    queryset = Advert.objects.all().order_by("-created_at")
     lookup_field = 'slug'
     serializer_class = AdvertSerializer
     permission_classes = [IsAuthenticated]

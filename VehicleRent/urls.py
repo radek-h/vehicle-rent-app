@@ -14,10 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, re_path, include
 from users.forms import CustomUserForm
+<<<<<<< HEAD
 from django.conf import settings
 from django.conf.urls.static import static
+=======
+from core.views import IndexTemplateView
+>>>>>>> vuejs
 from django_registration.backends.one_step.views import RegistrationView
 
 
@@ -38,5 +42,10 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/rest-auth/', include('rest_auth.urls')),
     path('api/rest-auth/registration/', include('rest_auth.registration.urls')),
+<<<<<<< HEAD
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+    re_path(r"^.*$", IndexTemplateView.as_view(), name='entry-point')
+] 
+>>>>>>> vuejs

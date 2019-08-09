@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,3 +13,19 @@
     
 </body>
 </html>
+=======
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+
+    <noscript>
+        <strong>We're sorry but frontend doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
+    <div id="app"></div>
+
+    {% render_bundle 'app' %}
+
+{% endblock %}
+>>>>>>> vuejs
