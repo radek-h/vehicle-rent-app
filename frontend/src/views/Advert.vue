@@ -86,10 +86,10 @@
                 </p>
               </div>
             </div>
-            <!-- <router-link
-            :to="{ name: 'advert', params: { slug: advert.slug } }">-->
-            <a class="waves-effect btn-flat">Make an order</a>
-            <!-- </router-link> -->
+            <router-link
+            :to="{ name: 'advert', params: { slug: advert.slug } }">
+              <a class="waves-effect btn-flat">Make an order</a>
+            </router-link>
 
             <!-- <a class="waves-effect waves-teal btn-flat">Make an order</a> -->
           </div>

@@ -18,7 +18,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/add-advert" class="btn waves-effect waves-light white">
+        <router-link :to="{ name: 'advert-editor' }" class="btn waves-effect waves-light white">
           Add Advert
         </router-link>
       </li>
