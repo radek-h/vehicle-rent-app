@@ -22,9 +22,10 @@ export default new Router({
       props: true
     },
     {
-      path: "/add-advert",
+      path: "/add-advert/:slug?",
       name: "advert-editor",
       component: AdvertEditor,
+      props: true
     },
   ]
 });
