@@ -1,11 +1,12 @@
 asn1crypto==0.24.0
+autopep8==1.4.4
 certifi==2019.6.16
 cffi==1.12.3
 chardet==3.0.4
 confusable-homoglyphs==3.2.0
 cryptography==2.7
 defusedxml==0.6.0
-Django==2.2.3
+Django==2.2.4
 django-allauth==0.39.1
 django-crispy-forms==1.7.2
 django-registration==3.0.1
@@ -16,6 +17,7 @@ idna==2.8
 oauthlib==3.0.2
 Pillow==6.1.0
 psycopg2==2.8.3
+pycodestyle==2.5.0
 pycparser==2.19
 python3-openid==3.1.0
 pytz==2019.1
