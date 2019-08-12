@@ -23,7 +23,7 @@ class Advert(models.Model):
     city = models.CharField(max_length=100)
     price_per_day = models.PositiveIntegerField('Price/day', validators=[
         MinValueValidator(1)])
-    available_from = models.DateField(default=date.today)
+    available_from = models.DateField()
     available_to = models.DateField()
     image = models.ImageField('Image', blank=True, upload_to='photos')
     content = models.TextField()
