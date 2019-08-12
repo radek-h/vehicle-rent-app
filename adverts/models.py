@@ -2,6 +2,8 @@ from .choices import *
 from datetime import date
 from django.db import models
 from django.conf import settings
+from django.dispatch import receiver
+from django.db.models.signals import post_delete
 from django.core.validators import MinValueValidator, ValidationError
 from django.template.defaultfilters import slugify
 from VehicleRent.utils import generate_random_string
@@ -23,7 +25,7 @@ class Advert(models.Model):
         MinValueValidator(1)])
     available_from = models.DateField(default=date.today)
     available_to = models.DateField()
-    image = models.ImageField('Image',blank=True, upload_to='photos')
+    image = models.ImageField('Image', blank=True, upload_to='photos')
     content = models.TextField()
     slug = models.SlugField(max_length=100, unique=True)
 
@@ -35,6 +37,11 @@ class Advert(models.Model):
         random_string = generate_random_string()
         self.slug = slug + '-' + random_string
         super(Advert, self).save(*args, **kwargs)
+
+
+@receiver(post_delete, sender=Advert)
+def submission_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
 
 
 class Order(models.Model):
