@@ -3,11 +3,13 @@ from adverts.api import views as av  # adverts views
 from django.urls import include, path, re_path
 from core.views import IndexTemplateView
 from rest_framework.routers import DefaultRouter
+from users.api import views as uv
 
 
 router = DefaultRouter()
 
 router.register(r"adverts", av.AdvertViewSet)
+#router.register(r"users", uv.UserViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
