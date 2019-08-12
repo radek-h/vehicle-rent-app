@@ -14,15 +14,18 @@ Show all registered users
 ----
 Returns json data list with all registered users in application
 
-* **URL:**
+* **URL:**<br/>
   /users/
 
-* **Method:**
+* **Method:**<br/>
   `GET`
+  
+* **URL Params**<br/>
+  Required:`None`
  
-* **Success Response:**
-  * **Code:** 200 <br />
-  * **Content:** `[{"id": 1, "username": "admin", "email": "admin@admin.pl"},`
+* **Success Response:**<br/>
+  * **Code:** HTTP 200 OK <br />
+  * **Content:** `[{"id": 1, "username": "admin", "email": "admin@admin.pl"},`<br/>
         `{"id": 2, "username": "Mike Tyson", "email": "tyson@hotmail.com"}(..)]`
  
 * **Error Response:**
@@ -33,13 +36,13 @@ Show specific user
 ----
 Return json data about specific user.
 
-* **URL:**
-  /user/<id:pk>/
+* **URL:**<br/>
+  /user/**:id**/
 
-* **Method:**
+* **Method:**<br/>
   `GET`
   
-*  **URL Params**
+*  **URL Params**<br/>
    Required:`id:Integer`
  
 * **Success Response:**
@@ -53,27 +56,27 @@ Return json data about specific user.
 # **ADVERTS**
 Display all adverts with possibility adding an advert
 ----
-`GET`: Return json data list with all adverts added by authenticated users
+`GET`: Return json data list with all adverts added by authenticated users <br/>
 `POST`: Create an advert
 
-* **URL:**
+* **URL:**<br/>
   /adverts/
 
-* **Method:**
+* **Method:**<br/>
   `GET`, `POST`
   
-*  **URL Params**
+*  **URL Params**<br/>
    Required:`None`
    
 * **Data Params**
-   Required:`"vehicle_type":String, `
-            `"vehicle_brand":String`
-            `"vehicle_model":String`
-            `"city":String`
-            `"price_per_day":Integer`
-            `"available_from":DateField`
-            `"available_to":DateField`
-            `"content":String`
+   Required:`"vehicle_type":String,`<br/>
+            `"vehicle_brand":String`<br/>
+            `"vehicle_model":String`<br/>
+            `"city":String`<br/>
+            `"price_per_day":Integer`<br/>
+            `"available_from":DateField`<br/>
+            `"available_to":DateField`<br/>
+            `"content":String`<br/>
    Optionally: `"image":ImageField"`
  
 * **`POST` Success Response:**
@@ -85,31 +88,31 @@ Display all adverts with possibility adding an advert
 * **Error Response:**
   * **Code:** HTTP 400 BAD REQUEST <br />
   
-Edit, delete an user's advert
+Edit, delete and display an user's advert
 ----
-`GET`: Display advert specific by `slug` 
-`PUT`, `PATCH`: Edit an advert created by user
-`DELETE`: Delete permanently an advert created by user
+`GET`: Display advert specific by `slug`<br/>
+`PUT`, `PATCH`: Edit an advert created by user<br/>
+`DELETE`: Delete permanently an advert created by user<br/>
 
-* **URL:**
-  /adverts/<slug:slug>/
+* **URL:**<br/>
+  /adverts/**:slug**/
 
-* **Method:**
+* **Method:**<br/>
   `GET`, `PUT`, `PATCH`, `DELETE`
   
-*  **URL Params**
+*  **URL Params**<br/>
    Required: `slug` of an advert instance
    
-* **Data Params**
-   Optionally:`"vehicle_type":String, `
-            `"vehicle_brand":String`
-            `"vehicle_model":String`
-            `"city":String`
-            `"price_per_day":Integer`
-            `"available_from":DateField`
-            `"available_to":DateField`
-            `"image":ImageField"`
-            `"content":String`
+* **Data Params**<br/>
+   Optionally:`"vehicle_type":String,`<br/>
+            `"vehicle_brand":String`<br/>
+            `"vehicle_model":String`<br/>
+            `"city":String`<br/>
+            `"price_per_day":Integer`<br/>
+            `"available_from":DateField`<br/>
+            `"available_to":DateField`<br/>
+            `"image":ImageField"`<br/>
+            `"content":String`<br/>
             
 * **`GET`, `PUT`, `PATCH` Success Response:**
   * **Code:** HTTP 200 OK <br />
@@ -128,16 +131,16 @@ List all orders for specific advert
 ----
 `GET`: Return all made orders for specific advert
 
-* **URL:**
-  /adverts/<slug:slug>/orders/
+* **URL:**<br/>
+  /adverts/**:slug**/orders/
 
-* **Method:**
+* **Method:**<br/>
   `GET`
   
-*  **URL Params**
+*  **URL Params**<br/>
    Required: `slug` of an advert instance
    
-* **Data Params**
+* **Data Params**<br/>
    Required: `None`
 
 * **`GET` Success Response:**
@@ -150,19 +153,19 @@ Make an order for a specific advert
 ----
 `POST`: Create an order for specifig advert simply passing the data params
 
-* **URL:**
-  /adverts/<slug:slug>/order/
+* **URL:**<br/>
+  /adverts/**:slug**/order/
 
-* **Method:**
+* **Method:**<br/>
   `POST`
   
-*  **URL Params**
+*  **URL Params**<br/>
    Required: `slug` of an advert instance
    
-* **Data Params**
-   Required:`"order_from":DateField, `
-            `"order_to":DateField, 
-            `"content":String`
+* **Data Params**<br/>
+   Required:`"order_from":DateField,`<br/>
+            `"order_to":DateField,`<br/>
+            `"content":String`<br/>
 
 * **`GET` Success Response:**
   * **Code:** HTTP 201 CREATED <br />
@@ -172,23 +175,23 @@ Make an order for a specific advert
   
 Edit, delete an user's advert
 ----
-`GET`: Display an order specific by order's `id`
-`PUT`, `PATCH`: Edit an order created by user
-`DELETE`: Delete permanently an order created by user
+`GET`: Display an order specific by order's `id`<br/>
+`PUT`, `PATCH`: Edit an order created by user<br/>
+`DELETE`: Delete permanently an order created by user<br/>
 
-* **URL:**
-  /order/<int:pk>/
+* **URL:**<br/>
+  /order/**:id**/
 
-* **Method:**
+* **Method:**<br/>
   `GET`, `PUT`, `PATCH`, `DELETE`
   
-*  **URL Params**
+*  **URL Params**<br/>
    Required: `id` of an order instance
    
-* **Data Params**
-   Optionally:`"order_from":DateField, `
-              `"order_to":DateField, 
-              `"content":String`
+* **Data Params**<br/>
+   Optionally:`"order_from":DateField, `<br/>
+              `"order_to":DateField, `<br/>
+              `"content":String`<br/>
             
 * **`GET`, `PUT`, `PATCH` Success Response:**
   * **Code:** HTTP 200 OK <br />
