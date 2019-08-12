@@ -2,7 +2,7 @@ from datetime import datetime
 from rest_framework import viewsets, generics
 from rest_framework.generics import get_object_or_404
 from rest_framework.exceptions import ValidationError
-from rest_framework.permissions import  IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 from .permissions import IsAuthorOrReadOnly, IsNotAuthorOrReadOnly
 from adverts.models import Advert, Order
