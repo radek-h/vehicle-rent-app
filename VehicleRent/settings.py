@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'rest_auth.registration', 
 
     'crispy_forms',
-    'webpack_loader'
+    # 'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -92,7 +92,6 @@ DATABASES = {
         'PASSWORD': '73Jkzns1_eZe1kirdBPE0HglGLUlJzjq',
         'HOST': 'manny.db.elephantsql.com',
         'PORT': '5432',
-
     }
 }
 

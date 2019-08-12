@@ -15,7 +15,7 @@ class AdvertViewSet(viewsets.ModelViewSet):
     queryset = Advert.objects.all().order_by("-created_at")
     lookup_field = 'slug'
     serializer_class = AdvertSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
