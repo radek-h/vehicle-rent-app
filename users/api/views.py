@@ -7,7 +7,6 @@ from rest_framework.response import Response
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-
 class UserListAPIView(generics.ListAPIView):
     queryset = CustomUser.objects.all().order_by("username")
     serializer_class = UserDisplaySerializer
