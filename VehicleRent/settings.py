@@ -140,7 +140,7 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = "/static/"
+STATIC_ROOT = "/static/"
 
 AUTH_USER_MODEL = "users.CustomUser"
 

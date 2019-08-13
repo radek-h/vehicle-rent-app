@@ -1,15 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>VehicleRent</title>
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<style>
+    * {
+        font-family: verdana;
+        font-size: 10pt;
+        COLOR: gray;
+    }
+
+    b {
+        font-weight: bold;
+    }
+
+    table {
+        border: 1px solid gray;
+    }
+
+    td {
+        text-align: center;
+        padding: 25;
+    }
+
+    table {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+    }
+</style>
+{% endblock %}
 </head>
-<body>
-    <h1>Vue.js Single-page Application</h1>
-    <h2>Site under construction</h2>
-    <div id="app"></div>
-    
-</body>
+{% block content %}
+<br><br><br><br>
+<table>
+    <tr>
+        <td><b>Strona w trakcie budowy!</b></td>
+    </tr>
+    <tr>
+        <td>API jest dostepne na stronie: vehiclerent.radoslawh.pl<b>/api/</b></td>
+    </tr>
+</table>
+<br><br>
+
+
+<div id="app"></div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
 </html>
