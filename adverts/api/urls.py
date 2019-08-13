@@ -9,7 +9,6 @@ from users.api import views as uv
 router = DefaultRouter()
 
 router.register(r"adverts", av.AdvertViewSet)
-#router.register(r"users", uv.UserViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
@@ -25,6 +24,4 @@ urlpatterns = [
     path("order/<int:pk>/",
          av.OrderRUDAPIView.as_view(),
          name='orders-detail'),
-
-    re_path(r"^.*$", IndexTemplateView.as_view(), name='entry-point')
 ]
