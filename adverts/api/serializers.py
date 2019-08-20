@@ -78,3 +78,18 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def get_advert_slug(self, instance):
         return instance.advert.slug
+
+    # def validate(self, data):
+    #     print(self.advert_slug)
+    #     advert = Order.advert.slug
+    #     print(data['order_from'])
+    #     print(advert.available_from)
+
+    #     if data['order_from'] < advert.available_from:
+    #         raise serializers.ValidationError(
+    #             "Order from date must occur after available from date")
+    #     elif data['order_to'] > advert.available_to:
+    #         raise serializers.ValidationError(
+    #             "Order to date must occur before available to date")
+    #     else:
+    #         return data

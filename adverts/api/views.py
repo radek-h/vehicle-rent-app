@@ -34,6 +34,14 @@ class OrderCreateAPIView(generics.CreateAPIView):
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated, IsNotAuthorOrReadOnly]
 
+    # def is_valid(self, serializer, raise_exceptions=True):
+    #     order_from = serializer.context['request'].data['order_from']       
+    #     order_from = datetime.strptime(order_from, "%Y-%m-%d").date()
+
+    #     order_to = serializer.context['request'].data['order_to']
+    #     order_to = datetime.strptime(order_to, "%Y-%m-%d").date()
+
+
     def perform_create(self, serializer):
         order_from = serializer.context['request'].data['order_from']       
         order_from = datetime.strptime(order_from, "%Y-%m-%d").date()
@@ -41,18 +49,17 @@ class OrderCreateAPIView(generics.CreateAPIView):
         order_to = serializer.context['request'].data['order_to']
         order_to = datetime.strptime(order_to, "%Y-%m-%d").date()
 
-        request_user = self.request.user
         kwarg_slug = self.kwargs.get("slug")
         advert = get_object_or_404(Advert, slug=kwarg_slug)
-        query = Advert.objects.get(slug=kwarg_slug)
+        queryset = advert.orders.filter(author=self.request.user)
 
-        if advert.orders.filter(author=request_user).exists():
+        if queryset.exists():
             raise ValidationError("You have already order this vehicle earlier!")
-        elif query.author == request_user:
+        elif advert.author == self.request.user:
             raise ValidationError("You cannot order your own vehicle!")
-        elif order_from < query.available_from:
+        elif order_from < advert.available_from:
             raise ValidationError("You cannot order vehicle before available date")
-        elif order_to > query.available_to:
+        elif order_to > advert.available_to:
             raise ValidationError("You cannot order vehicle after available date")
 
         advert.purchasers.add(request_user)
