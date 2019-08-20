@@ -52,6 +52,7 @@ class OrderCreateAPIView(generics.CreateAPIView):
         kwarg_slug = self.kwargs.get("slug")
         advert = get_object_or_404(Advert, slug=kwarg_slug)
         queryset = advert.orders.filter(author=self.request.user)
+        
 
         if queryset.exists():
             raise ValidationError("You have already order this vehicle earlier!")
