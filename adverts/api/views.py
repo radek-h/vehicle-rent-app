@@ -1,19 +1,21 @@
 from datetime import datetime
+
 from rest_framework import viewsets, generics
-from rest_framework.generics import get_object_or_404
 from rest_framework.exceptions import ValidationError
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 
-from .permissions import IsAuthorOrReadOnly, IsNotAuthorOrReadOnly
-from adverts.models import Advert, Order
 from adverts.api.serializers import AdvertSerializer, OrderSerializer
+from adverts.models import Advert, Order
+from .permissions import IsAuthorOrReadOnly, IsNotAuthorOrReadOnly
 
 now = datetime.now()
 now = now.strftime("%Y-%m-%d")
 
+
 class AdvertViewSet(viewsets.ModelViewSet):
     queryset = Advert.objects.all().order_by("-created_at")
-    lookup_field = 'slug'
+    lookup_field = "slug"
     serializer_class = AdvertSerializer
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
 
@@ -23,6 +25,7 @@ class AdvertViewSet(viewsets.ModelViewSet):
 
 class OrderListAPIView(generics.ListAPIView):
     serializer_class = OrderSerializer
+
     # permission_classes = [IsAuthenticatedOrReadOnly]
     def get_queryset(self):
         kwarg_slug = self.kwargs.get("slug")
@@ -41,9 +44,8 @@ class OrderCreateAPIView(generics.CreateAPIView):
     #     order_to = serializer.context['request'].data['order_to']
     #     order_to = datetime.strptime(order_to, "%Y-%m-%d").date()
 
-
     def perform_create(self, serializer):
-        order_from = serializer.context['request'].data['order_from']       
+        order_from = serializer.context['request'].data['order_from']
         order_from = datetime.strptime(order_from, "%Y-%m-%d").date()
 
         order_to = serializer.context['request'].data['order_to']
@@ -52,7 +54,6 @@ class OrderCreateAPIView(generics.CreateAPIView):
         kwarg_slug = self.kwargs.get("slug")
         advert = get_object_or_404(Advert, slug=kwarg_slug)
         queryset = advert.orders.filter(author=self.request.user)
-        
 
         if queryset.exists():
             raise ValidationError("You have already order this vehicle earlier!")
@@ -63,10 +64,10 @@ class OrderCreateAPIView(generics.CreateAPIView):
         elif order_to > advert.available_to:
             raise ValidationError("You cannot order vehicle after available date")
 
-        advert.purchasers.add(request_user)
+        advert.purchasers.add(self.request.user)
         advert.save()
 
-        serializer.save(author=request_user, advert=advert)
+        serializer.save(author=self.request.user, advert=advert)
 
 
 class OrderRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -75,12 +76,12 @@ class OrderRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated, IsAuthorOrReadOnly]
 
     def perform_update(self, serializer):
-        order_from = serializer.context['request'].data['order_from'] 
+        order_from = serializer.context['request'].data['order_from']
         order_from = datetime.strptime(order_from, "%Y-%m-%d").date()
 
         order_to = serializer.context['request'].data['order_to']
         order_to = datetime.strptime(order_to, "%Y-%m-%d").date()
-        
+
         kwarg_id = self.kwargs['pk']
 
         q = Order.objects.get(id=kwarg_id)
