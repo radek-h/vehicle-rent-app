@@ -1,3 +1,4 @@
 db.sqlite3
 .vscode/
 frontend/webpack-stats.json
+adverts/api/__pycache__/
